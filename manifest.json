@@ -7,6 +7,6 @@
 		"128": "apple-icon-120x120.png"
 	},
 	"chrome_url_overrides" : {
-		"newtab": "index.html"
+		"newtab": "index.php"
 	}
 }
