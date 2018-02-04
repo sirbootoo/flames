@@ -369,3 +369,11 @@ transform: translate(5px, -35px) scale(0.6);
 .try-again{
 	cursor: pointer;
 }
+
+/************/
+.close{
+	width: 28px;
+	height: 28px;
+	float: right;
+	position: relative;
+}
