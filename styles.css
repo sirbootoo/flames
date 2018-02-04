@@ -19,6 +19,7 @@ body {
 	font-size: 1em;
 	font-weight: 100;
 	font-family: 'Dosis' !important;
+	overflow: hidden;
 }
 
 .container{
@@ -336,7 +337,35 @@ transform: translate(5px, -35px) scale(0.6);
 
 .answer{
 	display: none;
+	text-align: center;
+	color: #784aff !important;
+}
+.answer-title{
 	font-family: 'Lobster';
 	font-size: 5em;
+}
+.answer-description{
+	font-family: 'Dosis';
+	font-size: 2em;
+	font-weight: bold;
+}
+
+/*Progress Bar*/
+#pbar_innertext{
+	z-index: 3; 
+	position: absolute; 
+	top: 35%; 
+	left: 0; 
+	width: 100%; 
+	display: none;
+	color: white; 
+	font-family: 'Dosis';
+	font-size: 6em;
+	font-weight: bold; 
 	text-align: center;
+}
+
+/*Try Again Button*/
+.try-again{
+	cursor: pointer;
 }
