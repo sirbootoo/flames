@@ -369,6 +369,7 @@ transform: translate(5px, -35px) scale(0.6);
 .try-again{
 	cursor: pointer;
 	height: 28px;
+	color: #ff4a56;
 }
 
 /************/
@@ -376,5 +377,6 @@ transform: translate(5px, -35px) scale(0.6);
 	width: 28px;
 	height: 28px;
 	float: right;
+	color: #ff4a56;
 	position: relative;
 }
