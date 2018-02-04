@@ -85,8 +85,8 @@ $(document).ready(function () {
 		$("#law").fadeOut();
 		$("#content").fadeIn();
 		$(".answer").fadeOut();
-		$('.question').fadeIn();
-		$('form button').fadeIn();
+		$(".question").fadeIn();
+		$("form button").fadeIn();
 	});
 
 	$(document).on('click', '.close, .try-again', function (e) {
