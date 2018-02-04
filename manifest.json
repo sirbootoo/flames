@@ -1,0 +1,12 @@
+{
+	"name": "Flames",
+	"description": "Taking back to way back when before technology and how we match make in those days",
+	"version": "1.0.0",
+	"manifest_version": 1,
+	"icons": {
+		"128": "apple-icon-120x120.png"
+	},
+	"chrome_url_overrides" : {
+		"newtab": "index.html"
+	}
+}
