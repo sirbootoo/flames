@@ -86,7 +86,7 @@ $(document).ready(function () {
 		$("#content").fadeIn();
 	});
 
-	$(document).on('click', '.close', function (e) {
+	$(document).on('click', '.close, .try-again', function (e) {
 		$("#content").fadeOut();
 		$("#law").fadeIn();
 	});

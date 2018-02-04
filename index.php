@@ -5,6 +5,7 @@
 	<title>New Tab - Flames Extension</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="styles.css" type="text/css" />
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 
 <body>
@@ -28,6 +29,7 @@
 			<p id="law-title"></p>
 			<p id="law-desc">
 				<form id="law-form">
+					<i class="fa fa-close" style="float: right; position: relative"></i>
 					<h1 class="pointer">Flames</h1>
 					<div class="question">
 						<input type="text" class="yourname" required/>
@@ -47,7 +49,7 @@
 					<div class="answer">
 						<span class="answer-title"></span>
 						<p class="answer-description"></p>
-						<span class="try-again"><img src="./128266.png" style="width: 64px; height: 64px" /></span>
+						<span class="try-again"><i class="fa-redo"></i></span>
 					</div>
 
 
