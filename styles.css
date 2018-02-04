@@ -368,6 +368,7 @@ transform: translate(5px, -35px) scale(0.6);
 /*Try Again Button*/
 .try-again{
 	cursor: pointer;
+	height: 28px;
 }
 
 /************/
