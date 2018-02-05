@@ -388,12 +388,14 @@ transform: translate(5px, -35px) scale(0.6);
 /*People*/
 .people{
 	font-family: 'Dosis';
-	font-weight: bolder;
+	font-weight: bolder !important;
 }
 
 .var1, .var2{
 	font-weight: lighter;
 	color: #ff4ae7;
+	margin-left: 20px;
+	font-size: 2em;
 }
 
 /*Social Buttons*/
