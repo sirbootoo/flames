@@ -64,6 +64,8 @@ function flamesCal() {
 			console.log(flame[i].name);
 			$('.answer-title').html(flame[i].name);
 			$('.answer-description').html(flame[i].description);
+			$('.var1').html(var1);
+			$('.var2').html(var2);
 			/* let flameArr = localStorage.getItem('flames') ? localStorage.getItem('flames') : [];
 			let flameObj = {
 				firstPerson: var1,
@@ -74,6 +76,7 @@ function flamesCal() {
 			flameArr.push(flameObj.toString());
 			localStorage.setItem('flames', flameArr); */
 			$('.answer').slideDown();
+			$('.rrssb-buttons').fadeIn();
 		}
 	}
 }

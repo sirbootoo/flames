@@ -380,7 +380,24 @@ transform: translate(5px, -35px) scale(0.6);
 	width: 28px;
 	height: 28px;
 	float: right;
-	color: #ff4a56;
+	color: #ff4ac3;
 	position: relative;
 	cursor: pointer;
+}
+
+/*People*/
+.people{
+	font-family: 'Dosis';
+	font-weight: bolder;
+}
+
+.var1, .var2{
+	font-weight: lighter;
+	color: #ff4ae7;
+}
+
+/*Social Buttons*/
+
+.rrssb-buttons{
+	display: none;
 }
