@@ -81,6 +81,34 @@ function flamesCal() {
 	}
 }
 
+//Convert base64 into blob
+//cf http://stackoverflow.com/questions/16245767/creating-a-blob-from-a-base64-string-in-javascript
+function b64toBlob(b64Data, contentType, sliceSize) {
+    contentType = contentType || '';
+    sliceSize = sliceSize || 512;
+
+    var byteCharacters = atob(b64Data);
+    var byteArrays = [];
+
+    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+        var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+        var byteNumbers = new Array(slice.length);
+        for (var i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+        }
+
+        var byteArray = new Uint8Array(byteNumbers);
+
+        byteArrays.push(byteArray);
+    }
+
+    var blob = new Blob(byteArrays, {type: contentType});
+    return blob;
+}
+
+OAuth.initialize("8FtK5BZDd11zcUHZnEclmtQ0lBI", {cache:true});
+
 $(document).ready(function () {
 	$("#law-id").on('click', '.btn', function (e) {
 		e.preventDefault();
@@ -103,4 +131,17 @@ $(document).ready(function () {
 		perc = 0;
 		animateUpdate();
 	});
+
+
+	var element = $("body");
+
+	$('.answer').on('click', '.icon--twitter', function(e){
+		html2canvas(element, {
+			onrendered: function (canvas) {
+				   getCanvas = canvas;
+				}
+		});
+		var imgageData = getCanvas.toDataURL("image/png");
+		console.log(ImageData);
+	})
 });
