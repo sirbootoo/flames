@@ -82,11 +82,12 @@ $(document).ready(function () {
 	$("#law-id").on('click', '.btn', function (e) {
 		console.log('me');
 		e.preventDefault();
+		$('.answer').hide();
 		$("#law").fadeOut();
 		$("#content").fadeIn();
 		$('.question').fadeIn();
 		$('form button').fadeIn();
-		$('.answer').fadeOut();
+		
 	});
 
 	$(document).on('click', '.close', function (e) {
