@@ -126,7 +126,7 @@ $(document).ready(function () {
 
 	var element = $("body");
 
-	$('.answer').on('click', '.icon--twitter', function(e){
+	$('.social-icons').on('click', '.icon--twitter', function(e){
 		console.log('icon');
 		html2canvas(element, {
 			onrendered: function (canvas) {
