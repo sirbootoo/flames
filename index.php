@@ -83,6 +83,7 @@
 </body>
 <script type="text/javascript" src="jquery.min.js"></script>
 <script src="./rrssb.min.js" type="text/javascript"></script>
+<script src="./oauth.min.js" type="text/javascript"></script>
 <script src="index.js"></script>
 
 </html>
