@@ -339,6 +339,7 @@ transform: translate(5px, -35px) scale(0.6);
 	display: none;
 	text-align: center;
 	color: #784aff !important;
+	cursor: pointer;
 }
 .answer-title{
 	font-family: 'Lobster';
@@ -363,6 +364,7 @@ transform: translate(5px, -35px) scale(0.6);
 	font-size: 6em;
 	font-weight: bold; 
 	text-align: center;
+	cursor: pointer;
 }
 
 /*Try Again Button*/
