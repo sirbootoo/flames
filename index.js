@@ -84,6 +84,9 @@ $(document).ready(function () {
 		e.preventDefault();
 		$("#law").fadeOut();
 		$("#content").fadeIn();
+		$('.question').fadeIn();
+		$('form button').fadeIn();
+		$('.answer').fadeOut();
 	});
 
 	$(document).on('click', '.close', function (e) {
