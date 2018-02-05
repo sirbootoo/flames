@@ -19,7 +19,6 @@ body {
 	font-size: 1em;
 	font-weight: 100;
 	font-family: 'Dosis' !important;
-	overflow: hidden;
 }
 
 .container{
@@ -395,7 +394,7 @@ transform: translate(5px, -35px) scale(0.6);
 	font-weight: lighter;
 	color: #ff4ae7;
 	margin-left: 20px;
-	font-size: 2em;
+	font-size: 8em;
 }
 
 /*Social Buttons*/

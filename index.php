@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="styles.css" type="text/css" />
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/rrssb@1.14.0/css/rrssb.css" />
+	<link rel="stylesheet" href="./rrssb.css" />
 </head>
 
 <body>
@@ -48,8 +48,10 @@
 
 
 					<div class="answer">
+						<div class="people">
+							<span class="var1"></span> x <span class="var2"></span>
+						</div>
 						<span class="answer-title"></span>
-						<div class="people"><span class="var1"></span> x <span class="var2"></span></div>
 						<p class="answer-description"></p>
 					</div>
 
@@ -90,7 +92,7 @@
 	</div>
 </body>
 <script type="text/javascript" src="jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/rrssb@1.14.0/js/rrssb.min.js" type="text/javascript"></script>
+<script src="./rrssb.min.js" type="text/javascript"></script>
 <script src="index.js"></script>
 
 </html>
