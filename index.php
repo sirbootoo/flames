@@ -80,10 +80,12 @@
 		<div id="pbar_innerdiv"></div>
 		<div id="pbar_innertext">Loading Your Fate <br> <span>0</span></div>
 	</div>
+
 </body>
 <script type="text/javascript" src="jquery.min.js"></script>
 <script src="./rrssb.min.js" type="text/javascript"></script>
 <script src="./oauth.min.js" type="text/javascript"></script>
+<script src="./html2canvas.min.js" type="text/javascript"></script>
 <script src="index.js"></script>
 
 </html>

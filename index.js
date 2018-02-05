@@ -7,6 +7,8 @@ var random = Math.floor(Math.random() * 48);
 
 var timer = 0;
 var perc = 0;
+var var1;
+var var2;
 
 function updateProgress(percentage) {
 	$('#pbar_innerdiv').css("width", percentage + "%");
@@ -31,8 +33,8 @@ function animateUpdate() {
 }
 
 function flamesCal() {
-	let var1 = $('.yourname').val().toLowerCase();
-	let var2 = $('.crush').val().toLowerCase();
+	var1 = $('.yourname').val().toLowerCase();
+	var2 = $('.crush').val().toLowerCase();
 	let flame = [
 		{ name: 'Friends', numbers: [0, 6, 12], description: 'Oh well! Either one of you have been made the Executive head of the friend zone.' },
 		{ name: 'Lovers', numbers: [1, 7, 13], description: 'Oh lucky you! You guys have something that we hardly have in this generation. You both should cherish it and I hope it last forever.' },
@@ -75,30 +77,32 @@ function flamesCal() {
 //Convert base64 into blob
 //cf http://stackoverflow.com/questions/16245767/creating-a-blob-from-a-base64-string-in-javascript
 function b64toBlob(b64Data, contentType, sliceSize) {
-    contentType = contentType || '';
-    sliceSize = sliceSize || 512;
+	contentType = contentType || '';
+	sliceSize = sliceSize || 512;
 
-    var byteCharacters = atob(b64Data);
-    var byteArrays = [];
+	var bb64 = btoa(b64Data);
 
-    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-        var slice = byteCharacters.slice(offset, offset + sliceSize);
+	var byteCharacters = atob(bb64);
+	var byteArrays = [];
 
-        var byteNumbers = new Array(slice.length);
-        for (var i = 0; i < slice.length; i++) {
-            byteNumbers[i] = slice.charCodeAt(i);
-        }
+	for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+		var slice = byteCharacters.slice(offset, offset + sliceSize);
 
-        var byteArray = new Uint8Array(byteNumbers);
+		var byteNumbers = new Array(slice.length);
+		for (var i = 0; i < slice.length; i++) {
+			byteNumbers[i] = slice.charCodeAt(i);
+		}
 
-        byteArrays.push(byteArray);
-    }
+		var byteArray = new Uint8Array(byteNumbers);
 
-    var blob = new Blob(byteArrays, {type: contentType});
-    return blob;
+		byteArrays.push(byteArray);
+	}
+
+	var blob = new Blob(byteArrays, { type: contentType });
+	return blob;
 }
 
-OAuth.initialize("8FtK5BZDd11zcUHZnEclmtQ0lBI", {cache:true});
+OAuth.initialize("8FtK5BZDd11zcUHZnEclmtQ0lBI", { cache: true });
 
 $(document).ready(function () {
 	$("#law-id").on('click', '.btn', function (e) {
@@ -108,7 +112,7 @@ $(document).ready(function () {
 		$("#content").fadeIn();
 		$('.question').fadeIn();
 		$('form button').fadeIn();
-		
+
 	});
 
 	$(document).on('click', '.close', function (e) {
@@ -123,21 +127,45 @@ $(document).ready(function () {
 		animateUpdate();
 	});
 
+	var element = $(".container")[0];
+	var getCanvas = [];
 
-	var element = $("body");
+	$('.social-icons').on('click', '.icon--twitter', function (e) {
+		console.log(element);
 
-	$('.social-icons').on('click', '.icon--twitter', function(e){
-		console.log('icon');
 		html2canvas(element, {
 			onrendered: function (canvas) {
-				   getCanvas = canvas;
-				}
+				getCanvas[0] = canvas;
+				//console.log(canvas);
+			}
+		}).then(payl => {
+			console.log(payl);
+			$('.renderCanvas').css({
+				width: '500px',
+				height: '450px'
+			});
+			var imageData = payl.toDataURL("image/png");
+			console.log(imageData);
+			var data = {
+				"status": "This is a test",
+				"media": []
+			};
+			//data.media.push(b64toBlob('iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAKfSURBVHjabJNNSFRRGIafc+6d8Y6OM42aTmpNauRgUVBRVEwZCC6kdtGqRRBtWkWLKGgXtghaRIsK3ES0L4pKCPpZREX2oxnVlOn4V4026Tjj3HvPPS2asRp64OODw8v3cXjfTxinrlOGBHSxzgPjxW4Cqvj+j7icy8AVIAIcK5YPuAMc/9+2fxEioWz3sFoozCrloVzVrLKLtud6XQiRKKlKcrPYo8AbhEiq+Xxba2MN7dEwtqsQCExT8moszfRMNmFUWwN4uhKI/z1gHikCai6/fefaRlqiYW6+HGEunQU00cYaejbGeJacjgym0hEjGBhC66UvhIEWlbPHN6yqo7UhzLUbz9mxup65C4dInTtIxPLRd/sFW1vqaaoNoRw1DawAQhI4Awzi6fjahjD97ybAUfTuWc+Je6+5l5zmTOc6mMnydOQbm2N1sGh3AZNArwR6Pa0fRGqD5BYdvk7MEoo3sbG1npXVFsv8JtviTdAWZWjyB8pRUOkHuAqcNYEpDQOmFJ2O8iCbpyfegRSCk53rlszZFKtjYCiFqzyElAAPgQkTuGgIcfR7JkeouRYCfrw/Li1RcD38oQCW5UMvFKCqog/YYgJ9QAbHPTKbt5cnNrVy980op+uCzOVshBCYhmR4LM2+DTFG0vNgGu+BS8AjUYqyFiLp5QttBza38flnjudPPoDt/k5ulUX37g6k43JncAwjGOhH626A0oA1wEfl6UVs10q0NxK2fGQLLkJAqMLHeGaBF5++KllVYQjIF+13SkFKAi2GFN+wfMOP36ZiZqWfppogrqeZTM+jXYURtO4XN8cAp/wWvgA5YMoIWiOelPtHZ7JMZBYywm/uNSorQOvRona0/Bb+ZhcgBRQMQ14CUsAtoAoolIt/DQBMqAUSa5wR2gAAAABJRU5ErkJggg=='));/* 
+			var data = new FormData();
+			data.append('status', 'This is a test');
+			data.append('media[]', b64toBlob(imageData), var1+'x'+var2+'.png');
+			console.log(data);
+			OAuth.popup("twitter").then(twi => {
+				return twi.post('/1.1/statuses/update_with_media.json', {
+					data: data,
+					cache:false,
+					processData: false,
+					contentType: false
+				});
+			}).done(function(data){
+				console.log(data);
+			});
 		});
-		var imgageData = getCanvas.toDataURL("image/png");
-		console.log(ImageData);
-		var data = new FormData();
-        data.append('status', 'This is a test');
-		data.append('media[]', b64toBlob(logo), 'logo.png');
-		console.log(data);
+
 	})
 });
