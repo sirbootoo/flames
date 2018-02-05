@@ -66,15 +66,6 @@ function flamesCal() {
 			$('.answer-description').html(flame[i].description);
 			$('.var1').html(var1);
 			$('.var2').html(var2);
-			/* let flameArr = localStorage.getItem('flames') ? localStorage.getItem('flames') : [];
-			let flameObj = {
-				firstPerson: var1,
-				secondPerson: var2,
-				answer: flame[i].name,
-				description: flame[i].description
-			}
-			flameArr.push(flameObj.toString());
-			localStorage.setItem('flames', flameArr); */
 			$('.answer').slideDown();
 			$('.rrssb-buttons').fadeIn();
 		}
@@ -136,6 +127,7 @@ $(document).ready(function () {
 	var element = $("body");
 
 	$('.answer').on('click', '.icon--twitter', function(e){
+		console.log('icon');
 		html2canvas(element, {
 			onrendered: function (canvas) {
 				   getCanvas = canvas;
@@ -143,5 +135,9 @@ $(document).ready(function () {
 		});
 		var imgageData = getCanvas.toDataURL("image/png");
 		console.log(ImageData);
+		var data = new FormData();
+        data.append('status', 'This is a test');
+		data.append('media[]', b64toBlob(logo), 'logo.png');
+		console.log(data);
 	})
 });
