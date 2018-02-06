@@ -148,14 +148,16 @@ $(document).ready(function () {
 			var imageData = payl.toDataURL("image/png");
 			console.log(imageData);
 			//data.media.push(b64toBlob(''));/* 
-			var data = new FormData();
-			data.append('status', 'This is a test');
-			data.append('media[]', b64toBlob(logoSample), 'imagess.png');
-			console.log(data);
+
 			OAuth.popup("twitter").then(twi => {
+				var data = new FormData();
+				data.append('status', 'This is a test');
+				data.append('media[]', b64toBlob(logoSample), 'imagess.png');
+				console.log(data);
+
 				twi.post('/1.1/statuses/update_with_media.json', {
 					data: data,
-					cache:false,
+					cache: false,
 					processData: false,
 					contentType: false
 				}).then(payl => {
@@ -163,9 +165,9 @@ $(document).ready(function () {
 				}).catch(er => {
 					console.log(er);
 				});
-			}).done(function(data){
+			}).done(function (data) {
 				console.log(data);
-			}).fail(function(err){
+			}).fail(function (err) {
 				console.log(err);
 			});
 		});
