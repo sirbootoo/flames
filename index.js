@@ -152,8 +152,10 @@ $(document).ready(function () {
 			OAuth.popup("twitter").then(twi => {
 				var data = new FormData();
 				data.append('status', 'This is a test');
-				data.append('media[]', b64toBlob(logoSample), 'imagess.png');
-				console.log(data);
+				data.append('media[]', b64toBlob(imageData), 'imagess.png');
+				for(var pair of data.entries()) {
+					console.log(pair[0]+ ', '+ pair[1]); 
+				 }
 				twi.post('/1.1/statuses/update_with_media.json', {
 					data: data,
 					cache: false,
