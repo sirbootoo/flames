@@ -103,7 +103,7 @@ function b64toBlob(b64Data, contentType, sliceSize) {
 	return blob;
 }
 
-OAuth.initialize("8FtK5BZDd11zcUHZnEclmtQ0lBI", { cache: true });
+OAuth.initialize('gVjn080iuDvRAmFP9paf1uP0LHw');
 
 $(document).ready(function () {
 	$("#law-id").on('click', '.btn', function (e) {
@@ -152,7 +152,7 @@ $(document).ready(function () {
 			data.append('status', 'This is a test');
 			data.append('media[]', b64toBlob(logoSample), 'imagess.png');
 			console.log(data);
-			OAuth.popup("twitter").then(twi => {
+			/* OAuth.popup("twitter").then(twi => {
 				return twi.post('/1.1/statuses/update_with_media.json', {
 					data: data,
 					cache:false,
@@ -163,7 +163,11 @@ $(document).ready(function () {
 				console.log(data);
 			}).fail(function(err){
 				console.log(err);
-			});
+			}); */
+			OAuth.popup('twitter').done(function(result) {
+				console.log(result)
+				// do some stuff with result
+			})
 		});
 
 	})
