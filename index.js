@@ -153,11 +153,15 @@ $(document).ready(function () {
 			data.append('media[]', b64toBlob(logoSample), 'imagess.png');
 			console.log(data);
 			OAuth.popup("twitter").then(twi => {
-				return twi.post('/1.1/statuses/update_with_media.json', {
+				twi.post('/1.1/statuses/update_with_media.json', {
 					data: data,
 					cache:false,
 					processData: false,
 					contentType: false
+				}).then(payl => {
+					console.log(payl);
+				}).catch(er => {
+					console.log(er);
 				});
 			}).done(function(data){
 				console.log(data);
