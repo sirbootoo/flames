@@ -154,13 +154,12 @@ $(document).ready(function () {
 				data.append('status', 'This is a test');
 				data.append('media[]', b64toBlob(logoSample), 'imagess.png');
 				console.log(data);
-
 				twi.post('/1.1/statuses/update_with_media.json', {
 					data: data,
 					cache: false,
 					processData: false,
 					contentType: false
-				})
+				});
 			}).done(function (data) {
 				console.log(data);
 			}).fail(function (err) {
