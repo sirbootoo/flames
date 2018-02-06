@@ -160,11 +160,7 @@ $(document).ready(function () {
 					cache: false,
 					processData: false,
 					contentType: false
-				}).then(payl => {
-					console.log(payl);
-				}).catch(er => {
-					console.log(er);
-				});
+				})
 			}).done(function (data) {
 				console.log(data);
 			}).fail(function (err) {
