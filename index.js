@@ -158,7 +158,8 @@ $(document).ready(function () {
 				 }
 				twi.post('/1.1/statuses/update_with_media.json', {
 					data: data,
-					cache: false
+					cache: false,
+					processData: false
 				});
 			}).done(function (data) {
 				console.log(data);
