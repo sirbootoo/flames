@@ -4,6 +4,10 @@
 <head>
 	<title>New Tab - Flames Extension</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="author" content="Chris Mills">
+	<meta name="description" content="Do you still remember back then in Secondary School (junior secondary school for some and Senior for others) ? A game
+	we played to use style to know how we and our crush clicked. Yeah I just brought that game to you, so you can know your
+	chance with your crush with the same old technique of FLAMES">
 	<link rel="stylesheet" href="styles.css" type="text/css" />
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<link rel="stylesheet" href="./rrssb.css" />

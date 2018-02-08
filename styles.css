@@ -393,8 +393,7 @@ transform: translate(5px, -35px) scale(0.6);
 .var1, .var2{
 	font-weight: lighter;
 	color: #ff4ae7;
-	margin-left: 20px;
-	font-size: 8em;
+	font-size: 1.5em;
 }
 
 /*Social Buttons*/

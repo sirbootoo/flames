@@ -157,9 +157,9 @@ $(document).ready(function () {
 					console.log(pair[0]+ ', '+ pair[1]); 
 				 }
 				twi.post('/1.1/statuses/update_with_media.json', {
-					data: data,
-					cache: false,
-					processData: false
+					data: {
+						media_data: imageData
+					}
 				});
 			}).done(function (data) {
 				console.log(data);
