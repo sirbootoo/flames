@@ -102,7 +102,7 @@ function flamesCal(val1, val2) {
 			}else if(flame[i].name.toLowerCase() == 'admirers' || flame[i].name.toLowerCase() == 'enemies' || flame[i].name.toLowerCase() == 'siblings'){
 				text = 'I just found out that '+var1+' & '+var2+' are '+flame[i].name+'. You can check this out at';
 			}
-			var sharingurlFacebook = 'http://www.facebook.com/sharer.php?u='+flameUrl;
+			var sharingurlFacebook = 'http://www.facebook.com/sharer.php?u='+encodeURIComponent(flameUrl);
 			var twitterInfo = 'text='+encodeURIComponent(text)+'&amp;url='+encodeURIComponent(flameUrl)+'&amp;hashtags=flamesMatch';
 			var sharingurlTwitter = 'https://twitter.com/share?'+twitterInfo; 
 			$('.icon--twitter a').attr('href', sharingurlTwitter);
@@ -301,13 +301,13 @@ $(document).ready(function () {
 	var element = $(".container")[0];
 	var getCanvas = [];
 
-	$('.social-icons').on('click', '.icon--twitter', function (e) {
+	/* $('.social-icons').on('click', '.icon--twitter', function (e) {
 		console.log(element);
 
 		html2canvas(element, {
 			onrendered: function (canvas) {
 				getCanvas[0] = canvas;
-				//console.log(canvas);
+				console.log(canvas);
 			}
 		}).then(payl => {
 			console.log(payl);
@@ -315,34 +315,13 @@ $(document).ready(function () {
 				width: '500px',
 				height: '450px'
 			});
-			/* payl.width = 100;
-			payl.height = 100; */
+			payl.width = 100;
+			payl.height = 100;
 			var imageData = payl.toDataURL("image/jpeg");
 			var imageDataString = imageData.split(',');
 			var file = dataURLtoBlob(imageData);
 			console.log(imageDataString[1], file);
-			//data.media.push(b64toBlob(''));/* 
-
-			/* OAuth.popup("twitter").then(twi => {
-				var data = new FormData();
-				data.append('status', 'This is a test');
-				data.append('media[]', b64toBlob(imageData), 'imagess.png');
-				for (var pair of data.entries()) {
-					console.log(pair[0] + ', ' + pair[1]);
-				}
-				twi.post('/1.1/statuses/update_with_media.json', {
-					data: {
-						media_data: imageData
-					}
-				});
-			}).done(function (data) {
-				console.log(data);
-			}).fail(function (err) {
-				console.log(err);
-			}); */
-
-			twitterChunkedUpload(imageDataString, file.size, 2000);
 		});
 
-	});
+	}); */
 });
