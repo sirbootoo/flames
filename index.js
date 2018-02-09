@@ -26,7 +26,10 @@ window.onload = function (e) {
 		$('form button').fadeIn();
 		clearTimeout(timer);
 		perc = 0;
-		animateUpdate(GetURLParameter('val1'), GetURLParameter('val2'));
+		var val1 = GetURLParameter('val1');
+		var val2 = GetURLParameter('val2');
+		console.log(val1, val2);
+		animateUpdate(val1, val2);
 	}
 }
 
