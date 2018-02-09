@@ -33,9 +33,15 @@ function animateUpdate() {
 	}
 }
 
-function flamesCal() {
-	var1 = $('.yourname').val().toLowerCase();
-	var2 = $('.crush').val().toLowerCase();
+function flamesCal(val1 = '', var2 = '') {
+	if (GetURLParameter(val1) && GetURLParameter(val2)) {
+		var1 = GetURLParameter(val1);
+		var2 = GetURLParameter(val2);
+	} else {
+		var1 = $('.yourname').val().toLowerCase();
+		var2 = $('.crush').val().toLowerCase();
+	}
+
 	let flame = [
 		{ name: 'Friends', numbers: [0, 6, 12], description: 'Oh well! Either one of you have been made the Executive head of the friend zone.' },
 		{ name: 'Lovers', numbers: [1, 7, 13], description: 'Oh lucky you! You guys have something that we hardly have in this generation. You both should cherish it and I hope it last forever.' },
@@ -105,7 +111,140 @@ function b64toBlob(b64Data, contentType, sliceSize) {
 
 OAuth.initialize('gVjn080iuDvRAmFP9paf1uP0LHw');
 
+twitterLogin = function () {
+	var oAuthRequest;
+	OAuth.initialize('bbii4DU7QS7yQZH55rqC0acFz0s');
+	oAuthRequest = OAuth.create('twitter');
+	if (!oAuthRequest) {
+		OAuth.popup(
+			'twitter', { cache: true }
+		).done(function (oauthResult) {
+			return oauthResult.get(
+				'https://api.twitter.com/1.1/account/verify_credentials.json'
+			);
+		});
+		return OAuth.create('twitter');
+	}
+	return oAuthRequest;
+};
+
+twitterChunkedUpload = function (base64ImageString, fileSize, chunkSize) {
+	var mediaIdString;
+	var oAuthRequest = twitterLogin();
+	oAuthRequest.post(
+		'https://upload.twitter.com/1.1/media/upload.json',
+		{
+			data: {
+				command: 'INIT',
+				media_type: 'image/jpeg',
+				total_bytes: fileSize
+			}
+		}
+	).done(function (twitterResponse) {
+		// INIT successfully sent
+		// upload the one and only chunk to twitter
+		mediaIdString = twitterResponse.media_id_string;
+		oAuthRequest.post(
+			'https://upload.twitter.com/1.1/media/upload.json',
+			{
+				headers: { 'Content-Transfer-Encoding': 'base64' },
+				data: {
+					command: 'APPEND',
+					media_data: base64ImageString.slice(0, chunkSize),
+					media_id: mediaIdString,
+					segment_index: 0
+				}
+			}
+		).done(function () {
+			// first APPEND successful
+			oAuthRequest.post(
+				'https://upload.twitter.com/1.1/media/upload.json',
+				{
+					headers: { 'Content-Transfer-Encoding': 'base64' },
+					data: {
+						command: 'APPEND',
+						media_data: base64ImageString.slice(
+							chunkSize,
+							base64ImageString.length
+						),
+						media_id: mediaIdString,
+						segment_index: 1
+					}
+				}
+			).done(function () {
+				// second APPEND successful
+				oAuthRequest.post(
+					'https://upload.twitter.com/1.1/media/upload.json',
+					{
+						data: {
+							command: 'FINALIZE',
+							media_id: mediaIdString
+						}
+					}
+				).done(function () {
+					// FINALIZE successful
+					tweet(
+						oAuthRequest,
+						'Chunked (size ' + chunkSize + ') Append!',
+						mediaIdString
+					);
+				}).fail(function (err) {
+					console.log('FINALIZE Failed');
+					console.log(err);
+				});
+			}).fail(function (err) {
+				console.log('second APPEND Failed');
+				console.log(err);
+			});
+		}).fail(function (err) {
+			console.log('first APPEND Failed');
+			console.log(err);
+		});
+	}).fail(function (err) {
+		console.log('INIT Failed');
+		console.log(err);
+	});
+};
+
+function GetURLParameter(sParam) {
+
+	var sPageURL = window.location.search.substring(1);
+
+	var sURLVariables = sPageURL.split('&');
+
+	for (var i = 0; i < sURLVariables.length; i++) {
+
+		var sParameterName = sURLVariables[i].split('=');
+
+		if (sParameterName[0] == sParam) {
+
+			return sParameterName[1];
+
+		}
+
+	}
+
+}
+
+function dataURLtoBlob(dataURL) {
+	//http://mitgux.com/send-canvas-to-server-as-file-using-ajax
+	// Decode the dataURL    
+	var binary = atob(dataURL.split(',')[1]);
+	// Create 8-bit unsigned array
+	var array = [];
+	for (var i = 0; i < binary.length; i++) {
+		array.push(binary.charCodeAt(i));
+	}
+	// Return our Blob object
+	return new Blob([new Uint8Array(array)], { type: 'image/png' });
+}
+
 $(document).ready(function () {
+	if (GetURLParameter(val1) && GetURLParameter(val2)) {
+		clearTimeout(timer);
+		perc = 0;
+		animateUpdate();
+	}
 	$("#law-id").on('click', '.btn', function (e) {
 		e.preventDefault();
 		$('.answer').hide();
@@ -145,17 +284,21 @@ $(document).ready(function () {
 				width: '500px',
 				height: '450px'
 			});
-			var imageData = payl.toDataURL("image/png");
-			console.log(imageData);
+			/* payl.width = 100;
+			payl.height = 100; */
+			var imageData = payl.toDataURL("image/jpeg");
+			var imageDataString = imageData.split(',');
+			var file = dataURLtoBlob(imageData);
+			console.log(imageDataString[1], file);
 			//data.media.push(b64toBlob(''));/* 
 
-			OAuth.popup("twitter").then(twi => {
+			/* OAuth.popup("twitter").then(twi => {
 				var data = new FormData();
 				data.append('status', 'This is a test');
 				data.append('media[]', b64toBlob(imageData), 'imagess.png');
-				for(var pair of data.entries()) {
-					console.log(pair[0]+ ', '+ pair[1]); 
-				 }
+				for (var pair of data.entries()) {
+					console.log(pair[0] + ', ' + pair[1]);
+				}
 				twi.post('/1.1/statuses/update_with_media.json', {
 					data: {
 						media_data: imageData
@@ -165,8 +308,10 @@ $(document).ready(function () {
 				console.log(data);
 			}).fail(function (err) {
 				console.log(err);
-			});
+			}); */
+
+			twitterChunkedUpload(imageDataString, file.size, 2000);
 		});
 
-	})
+	});
 });
