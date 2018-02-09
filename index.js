@@ -32,6 +32,7 @@ window.onload = function (e) {
 
 
 function animateUpdate(val1='', val2='') {
+	console.log(val1, val2);
 	$('#law-form').fadeOut();
 	$('.question').fadeOut();
 	$('form button').fadeOut();
