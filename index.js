@@ -26,12 +26,12 @@ window.onload = function (e) {
 		$('form button').fadeIn();
 		clearTimeout(timer);
 		perc = 0;
-		animateUpdate();
+		animateUpdate(GetURLParameter('val1'), GetURLParameter('val2'));
 	}
 }
 
 
-function animateUpdate() {
+function animateUpdate(val1='', val2='') {
 	$('#law-form').fadeOut();
 	$('.question').fadeOut();
 	$('form button').fadeOut();
@@ -44,18 +44,14 @@ function animateUpdate() {
 		$('#pbar_innertext').fadeOut();
 		$('#law-form').fadeIn();
 
-		flamesCal();
+		flamesCal(val1, val2);
 	}
 }
 
 function flamesCal(val1 = '', var2 = '') {
-	if (GetURLParameter(val1) && GetURLParameter(val2)) {
-		var1 = GetURLParameter(val1).toLowerCase();
-		var2 = GetURLParameter(val2).toLowerCase();
-	} else {
-		var1 = $('.yourname').val().toLowerCase();
-		var2 = $('.crush').val().toLowerCase();
-	}
+
+	var1 = val1.toLowerCase();
+	var2 = val2.toLowerCase();
 
 	let flame = [
 		{ name: 'Friends', numbers: [0, 6, 12], description: 'Oh well! Either one of you have been made the Executive head of the friend zone.' },
@@ -276,7 +272,9 @@ $(document).ready(function () {
 		e.preventDefault();
 		clearTimeout(timer);
 		perc = 0;
-		animateUpdate();
+		var1 = $('.yourname').val();
+		var2 = $('.crush').val();
+		animateUpdate(var1, var2);
 	});
 
 	var element = $(".container")[0];
