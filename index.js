@@ -16,9 +16,10 @@ function updateProgress(percentage) {
 	$('#pbar_innertext span').text(percentage + "%");
 }
 
-window.onload = function () {
-	if (GetURLParameter(val1) && GetURLParameter(val2)) {
-		console.log(val1, val2);
+window.onload = function (e) {
+	e.stopPropagation(true);
+	if (GetURLParameter('val1') && GetURLParameter('val2')) {
+		console.log(GetURLParameter('val1'), GetURLParameter('val2'));
 		clearTimeout(timer);
 		perc = 0;
 		animateUpdate();
@@ -45,8 +46,8 @@ function animateUpdate() {
 
 function flamesCal(val1 = '', var2 = '') {
 	if (GetURLParameter(val1) && GetURLParameter(val2)) {
-		var1 = GetURLParameter(val1);
-		var2 = GetURLParameter(val2);
+		var1 = GetURLParameter(val1).toLowerCase();
+		var2 = GetURLParameter(val2).toLowerCase();
 	} else {
 		var1 = $('.yourname').val().toLowerCase();
 		var2 = $('.crush').val().toLowerCase();
