@@ -239,12 +239,14 @@ function dataURLtoBlob(dataURL) {
 	return new Blob([new Uint8Array(array)], { type: 'image/png' });
 }
 
+
+if (GetURLParameter(val1) && GetURLParameter(val2)) {
+	clearTimeout(timer);
+	perc = 0;
+	animateUpdate();
+}
+
 $(document).ready(function () {
-	if (GetURLParameter(val1) && GetURLParameter(val2)) {
-		clearTimeout(timer);
-		perc = 0;
-		animateUpdate();
-	}
 	$("#law-id").on('click', '.btn', function (e) {
 		e.preventDefault();
 		$('.answer').hide();
