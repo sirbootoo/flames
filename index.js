@@ -16,6 +16,14 @@ function updateProgress(percentage) {
 	$('#pbar_innertext span').text(percentage + "%");
 }
 
+window.onload = function () {
+	if (GetURLParameter(val1) && GetURLParameter(val2)) {
+		clearTimeout(timer);
+		perc = 0;
+		animateUpdate();
+	}
+}
+
 function animateUpdate() {
 	$('#law-form').fadeOut();
 	$('.question').fadeOut();
@@ -240,11 +248,6 @@ function dataURLtoBlob(dataURL) {
 }
 
 
-if (GetURLParameter(val1) && GetURLParameter(val2)) {
-	clearTimeout(timer);
-	perc = 0;
-	animateUpdate();
-}
 
 $(document).ready(function () {
 	$("#law-id").on('click', '.btn', function (e) {
