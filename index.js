@@ -17,9 +17,13 @@ function updateProgress(percentage) {
 }
 
 window.onload = function (e) {
-	e.stopPropagation(true);
 	if (GetURLParameter('val1') && GetURLParameter('val2')) {
 		console.log(GetURLParameter('val1'), GetURLParameter('val2'));
+		$('.answer').hide();
+		$("#law").fadeOut();
+		$("#content").fadeIn();
+		$('.question').fadeIn();
+		$('form button').fadeIn();
 		clearTimeout(timer);
 		perc = 0;
 		animateUpdate();
