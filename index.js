@@ -55,8 +55,8 @@ function animateUpdate(val1, val2) {
 
 function flamesCal(val1, val2) {
 
-	var1 = val1.toLowerCase();
-	var2 = val2.toLowerCase();
+	var1 = decodeURIComponent(val1.toLowerCase());
+	var2 = decodeURIComponent(val2.toLowerCase());
 
 	let flame = [
 		{ name: 'Friends', numbers: [0, 6, 12], description: 'Oh well! Either one of you have been made the Executive head of the friend zone.' },
