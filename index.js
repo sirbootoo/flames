@@ -42,7 +42,7 @@ function animateUpdate(val1, val2) {
 	perc++;
 	updateProgress(perc);
 	if (perc < 100) {
-		timer = setTimeout(animateUpdate, 50);
+		timer = setTimeout(animateUpdate(val1, val2), 50);
 	} else {
 		$('#pbar_innertext').fadeOut();
 		$('#law-form').fadeIn();
