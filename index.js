@@ -31,8 +31,7 @@ window.onload = function (e) {
 }
 
 
-function animateUpdate(val1='', val2='') {
-	console.log(val1, val2);
+function animateUpdate(val1, val2) {
 	$('#law-form').fadeOut();
 	$('.question').fadeOut();
 	$('form button').fadeOut();
@@ -45,11 +44,13 @@ function animateUpdate(val1='', val2='') {
 		$('#pbar_innertext').fadeOut();
 		$('#law-form').fadeIn();
 
+		console.log(val1, val2);
+
 		flamesCal(val1, val2);
 	}
 }
 
-function flamesCal(val1 = '', val2 = '') {
+function flamesCal(val1, val2) {
 
 	var1 = val1.toLowerCase();
 	var2 = val2.toLowerCase();
