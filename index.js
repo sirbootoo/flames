@@ -48,7 +48,7 @@ function animateUpdate(val1='', val2='') {
 	}
 }
 
-function flamesCal(val1 = '', var2 = '') {
+function flamesCal(val1 = '', val2 = '') {
 
 	var1 = val1.toLowerCase();
 	var2 = val2.toLowerCase();
