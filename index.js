@@ -18,11 +18,13 @@ function updateProgress(percentage) {
 
 window.onload = function () {
 	if (GetURLParameter(val1) && GetURLParameter(val2)) {
+		console.log(val1, val2);
 		clearTimeout(timer);
 		perc = 0;
 		animateUpdate();
 	}
 }
+
 
 function animateUpdate() {
 	$('#law-form').fadeOut();
