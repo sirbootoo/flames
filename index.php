@@ -63,15 +63,14 @@
 					<!--Social Buttons-->
 					<ul class="social-icons">
 						<li class="icon icon--twitter">
-							<a href="#">
-								<span class="icon__name">Twitter</span>
+							<a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank">
+								<img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
 							</a>
 							
 						</li>
 						<li class="icon icon--facebook">
-							<a href="#">
-								<span class="icon__name">Facebook</span>
-							</a>
+							<!-- Twitter -->
+							
 						</li>
 					</ul>
 					<!-- Buttons end here -->

@@ -61,9 +61,9 @@ function flamesCal(val1, val2) {
 	let flame = [
 		{ name: 'Friends', numbers: [0, 6, 12], description: 'Oh well! Either one of you have been made the Executive head of the friend zone.' },
 		{ name: 'Lovers', numbers: [1, 7, 13], description: 'Oh lucky you! You guys have something that we hardly have in this generation. You both should cherish it and I hope it last forever.' },
-		{ name: 'Admirer', numbers: [2, 8, 14], description: 'Oh! Oh!! I guess someone has a Secret Admirer.' },
+		{ name: 'Admirers', numbers: [2, 8, 14], description: 'Oh! Oh!! I guess someone has a Secret Admirer.' },
 		{ name: 'Marriage', numbers: [3, 9, 15], description: 'Oh boy!!! This is a strong one. You both are so sprung on each other you guys should get married already if you are not married already.' },
-		{ name: 'Enemy', numbers: [4, 10, 16], description: 'I am sure you were expecting something like Marriage yeah?? But yikes!! You guys hate each others guts. Really dunno what can help both of you though.' },
+		{ name: 'Enemies', numbers: [4, 10, 16], description: 'I am sure you were expecting something like Marriage yeah?? But yikes!! You guys hate each others guts. Really dunno what can help both of you though.' },
 		{ name: 'Siblings', numbers: [5, 11, 17], description: 'Mehn!! This will only feel somehow if you had intentions. But I guess you have been made brother/sister of each other. Enjoy the family zone. And this zone is one that cannot be broken, once a brother always a brother.' }
 	]
 
@@ -91,6 +91,21 @@ function flamesCal(val1, val2) {
 			$('.answer-description').html(flame[i].description);
 			$('.var1').html(var1);
 			$('.var2').html(var2);
+			var flameUrl = 'https://flamesng.herokuapp.com/?val1='+var1+'&val2='+var2;
+			var text;
+			if(flame[i].name.toLowerCase() == 'marriage'){
+				text = 'I just found out that '+var1+' & '+var2+' are ripe for '+flame[i].name+'. You can check this out at';
+			}else if(flame[i].name.toLowerCase() == 'friends'){
+				text = 'I just found out that '+var1+' & '+var2+' have either one in '+flame[i].name+' zone. You can check this out at';
+			}else if(flame[i].name.toLowerCase() == 'lovers'){
+				text = 'I just found out that '+var1+' & '+var2+' are '+flame[i].name+'. You can check this out at';
+			}else if(flame[i].name.toLowerCase() == 'admirers' || flame[i].name.toLowerCase() == 'enemies' || flame[i].name.toLowerCase() == 'siblings'){
+				text = 'I just found out that '+var1+' & '+var2+' are '+flame[i].name+'. You can check this out at';
+			}
+			
+			var twitterInfo = 'text='+encodeURIComponent(text)+'&amp;url='+encodeURIComponent(flameUrl)+'&amp;hashtags=flamesMatch';
+			var sharingurlTwitter = 'https://twitter.com/share?'+twitterInfo; 
+			$('.icon--twitter a').attr('href', sharingurlTwitter);
 			$('.answer').slideDown();
 			$('.rrssb-buttons').fadeIn();
 		}
