@@ -102,10 +102,11 @@ function flamesCal(val1, val2) {
 			}else if(flame[i].name.toLowerCase() == 'admirers' || flame[i].name.toLowerCase() == 'enemies' || flame[i].name.toLowerCase() == 'siblings'){
 				text = 'I just found out that '+var1+' & '+var2+' are '+flame[i].name+'. You can check this out at';
 			}
-			
+			var sharingurlFacebook = 'http://www.facebook.com/sharer.php?u='+flameUrl;
 			var twitterInfo = 'text='+encodeURIComponent(text)+'&amp;url='+encodeURIComponent(flameUrl)+'&amp;hashtags=flamesMatch';
 			var sharingurlTwitter = 'https://twitter.com/share?'+twitterInfo; 
 			$('.icon--twitter a').attr('href', sharingurlTwitter);
+			$('.icon--facebook a').attr('href', sharingurlFacebook);
 			$('.answer').slideDown();
 			$('.rrssb-buttons').fadeIn();
 		}
